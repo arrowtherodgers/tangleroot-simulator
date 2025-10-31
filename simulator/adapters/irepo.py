@@ -20,3 +20,15 @@ class IRepo(abc.ABC):
     def add_farms(self, farms : List[Farm]) -> None:
         raise NotImplementedError()
 
+    @abc.abstractmethod
+    def get_patches(self) -> List[Patch]:
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def get_plants(self) -> List[Plant]:
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def get_farms(self) -> List[Farm]:
+        raise NotImplementedError()
+

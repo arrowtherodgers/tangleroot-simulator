@@ -9,7 +9,7 @@ from simulator.model.plant import Plant
 
 class CSVReader:
     def __init__(self, data_path : Path) -> None:
-        self.__data_path = data_path
+        self.__data_path = str(data_path / 'farming_info.csv')
         self.__plants = list()
         self.__patches = list()
         self.__farms = list()
@@ -42,7 +42,7 @@ class CSVReader:
         self.__farms.append(farm)
 
     def read(self) -> None:
-        if not self.__data_path.exists():
+        if not self.__data_path:
             raise FileNotFoundError(f"File {self.__data_path} does not exist")
 
         with open(self.__data_path, mode='r', encoding='utf-8') as csv_file:
@@ -57,20 +57,14 @@ class CSVReader:
                 growth_time_hrs = float(row["Growth Time (hrs)"])
                 pet_rate = int(row["Pet Rate (99)"])
 
-                patch = next((patch for patch in self.patches if category == patch.category and location == patch.location), None)
-
-                if patch is None:
-                    patch = Patch(category, location)
-                    self.add_patch(patch)
+                patch = Patch(category, location)
+                self.add_patch(patch)
 
                 plant = Plant(category, seed, payment_qty, payment_type, growth_time_hrs, pet_rate)
                 self.add_plant(plant)
 
-                farm = next((farm for farm in self.farms if patch == farm.patch), None)
-
-                if farm is None:
-                    farm = Farm(plant, patch)
-                    self.add_farm(farm)
+                farm = Farm(plant, patch)
+                self.add_farm(farm)
 
 
 
