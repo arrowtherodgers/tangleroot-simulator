@@ -1,8 +1,10 @@
 from typing import List, TYPE_CHECKING
 
 class Patch:
-    def __init__(self, patch_id : int, category : str, location : str):
-        self.__id = patch_id
+    id_count = 1
+    def __init__(self, category : str, location : str):
+        self.__id = Patch.id_count
+        Patch.id_count += 1
         self.__category = category
         self.__location = location
 

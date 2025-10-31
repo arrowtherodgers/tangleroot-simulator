@@ -1,8 +1,10 @@
 from typing import List, TYPE_CHECKING
 
 class Plant:
-    def __init__(self, plant_id : int, category : str, seed : str, payment_qty : int, payment_type : str, growth_time_hrs : float, pet_rate : int):
-        self.__id = plant_id
+    id_count = 1
+    def __init__(self, category : str, seed : str, payment_qty : int, payment_type : str, growth_time_hrs : float, pet_rate : int):
+        self.__id = Plant.id_count
+        Plant.id_count += 1
         self.__category = category
         self.__seed = seed
         self.__payment_qty = payment_qty

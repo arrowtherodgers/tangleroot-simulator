@@ -5,8 +5,10 @@ from simulator.model.plant import Plant
 
 
 class Farm:
-    def __init__(self, farm_id : int, plant : Plant, patch : Patch):
-        self.__id = farm_id
+    id_count = 1
+    def __init__(self, plant : Plant, patch : Patch):
+        self.__id = Farm.id_count
+        Farm.id_count += 1
         self.__plant = plant
         self.__patch = patch
 
