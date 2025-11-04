@@ -1,5 +1,36 @@
 {% extends 'layout.html' %} {% block content %}
 
-<h1>Tangleroot Simulator</h1>
+<section class="aside">
+    <div class="title">
+        <h1>Tangleroot Simulator</h1>
+        <img src="{{ url_for('static', filename='images/'+image) }}" alt="Missing Tangleroot!" height="200"/>
+    </div>
+    <div class="summary">
+        <h3>Simulations Run: {{simulations_run}}</h3>
+        <h3>Pets Obtained: {{successful_runs}}</h3>
+        <h3>Average Days to Pet: {{average_days_elapsed}}</h3>
+        <h3>Fastest Pet: {{fastest_pet}} </h3>
+    </div>
+</section>
+
+<section class="results">
+    <table class="harvest_table">
+        <tr>
+            <th>Seed</th>
+            <th>Total Harvests</th>
+            <th>Average Harvests</th>
+        </tr>
+        {% for seed, count in harvests.items() %}
+            <tr>
+                <td>{{seed}}</td>
+                <td>{{count}}</td>
+                <td>{{count // simulations_run}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+
+
+
 
 {% endblock %}

@@ -29,3 +29,6 @@ class MemoryRepo(IRepo):
 
     def get_farms(self) -> List[Farm]:
         return self.__farms
+
+    def get_plant_by_id(self, plant_id: int) -> List[Plant] | None:
+        return next((plant for plant in self.__plants if plant.id == plant_id), None)

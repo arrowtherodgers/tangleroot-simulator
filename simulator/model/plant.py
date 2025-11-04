@@ -1,4 +1,5 @@
 from typing import List, TYPE_CHECKING
+import random
 
 class Plant:
     id_count = 1
@@ -55,4 +56,7 @@ class Plant:
     @property
     def pet_rate(self) -> int:
         return self.__pet_rate
+
+    def roll_pet(self) -> bool:
+        return random.randint(1, self.__pet_rate) == 1
 

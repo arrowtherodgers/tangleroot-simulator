@@ -13,7 +13,7 @@ class Farm:
         self.__patch = patch
 
     def __repr__(self) -> str:
-        return f"{self.__plant} in a {self.__patch}"
+        return f"{self.__plant} from a {self.__patch}"
 
     def __eq__(self, other) -> bool:
         if not isinstance(other, Patch):

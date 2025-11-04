@@ -32,3 +32,8 @@ class IRepo(abc.ABC):
     def get_farms(self) -> List[Farm]:
         raise NotImplementedError()
 
+    @abc.abstractmethod
+    def get_plant_by_id(self, plant_id: int) -> Plant:
+        raise NotImplementedError()
+
+
