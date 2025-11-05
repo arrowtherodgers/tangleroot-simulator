@@ -3,7 +3,6 @@ from typing import List, TYPE_CHECKING
 from simulator.model.patch import Patch
 from simulator.model.plant import Plant
 
-
 class Farm:
     id_count = 1
     def __init__(self, plant : Plant, patch : Patch):
